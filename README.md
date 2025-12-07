@@ -1,15 +1,15 @@
-# Descrião do projeto
+## Descrião do projeto
 
-Implementação Chomsky Greibach
+implementação de uma solução para normalização de GLC usando a forma normal de Greibach e Chomsky em Python 3
 
-# Compilação
+## Compilação
 
-Use python3 arquivo para compilar
-
-# Uso
+Use python3 ./[nome_do_arquivo] para compilar
 
 
-# Componentes
+
+
+## Componentes
 
 Moisés Átila
 
