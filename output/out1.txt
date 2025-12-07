@@ -1,0 +1,212 @@
+=== Gramática inicial (como lida do arquivo) ===
+Não-terminais: A, B, Produções: dict A, S, alphas = []  # Ai, betas = []   # Ai, def copy(self), def fresh_nonterminal(self, prefix="X"), def from_file(path: str), def to_text(self), if ", lhs, rhs_all = line.split(", lines.append(f"  {A}, self.log.write("=== Remoção de produções unitárias (A, self.log.write("Após eliminar Ai, self.productions = defaultdict(set)  # A, terminal_map = {}  # terminal
+Terminais: ", ",, ".join(rhs_list)), "Grammar":, (símbolos, (β, +, 1), ===\n"), Ai, Ai), Aj, B), RHS), a, b, com, começa, conjunto, de, e, esquerda:\n"), in, j<i, line:, na, not, novo, não, não-terminal, of, recursão, rhs, set, str:, tuplas, tuples, à, α, β
+Símbolo inicial: S
+Produções:
+  A -> & | a A
+  B -> b
+  Produções: dict A -> conjunto de tuplas (símbolos na RHS)
+  S -> A B | a
+  alphas = []  # Ai -> Ai α
+  betas = []   # Ai -> β (β não começa com Ai)
+  def copy(self) -> "Grammar":
+  def fresh_nonterminal(self, prefix="X") -> str:
+  def from_file(path: str) -> "Grammar":
+  def to_text(self) -> str:
+  if " -> " not in line:
+  lhs, rhs_all = line.split(" -> ", 1)
+  lines.append(f"  {A} -> " + " | ".join(rhs_list))
+  self.log.write("=== Remoção de produções unitárias (A -> B) ===\n")
+  self.log.write("Após eliminar Ai -> Aj com j<i e recursão à esquerda:\n")
+  self.productions = defaultdict(set)  # A -> set of rhs tuples
+  terminal_map = {}  # terminal -> novo não-terminal
+
+Opção de normalização escolhida: 2
+
+=== Remoção de produções-λ (ε) ===
+Gramática antes da remoção de λ:
+Não-terminais: A, B, Produções: dict A, S, alphas = []  # Ai, betas = []   # Ai, def copy(self), def fresh_nonterminal(self, prefix="X"), def from_file(path: str), def to_text(self), if ", lhs, rhs_all = line.split(", lines.append(f"  {A}, self.log.write("=== Remoção de produções unitárias (A, self.log.write("Após eliminar Ai, self.productions = defaultdict(set)  # A, terminal_map = {}  # terminal
+Terminais: ", ",, ".join(rhs_list)), "Grammar":, (símbolos, (β, +, 1), ===\n"), Ai, Ai), Aj, B), RHS), a, b, com, começa, conjunto, de, e, esquerda:\n"), in, j<i, line:, na, not, novo, não, não-terminal, of, recursão, rhs, set, str:, tuplas, tuples, à, α, β
+Símbolo inicial: S
+Produções:
+  A -> & | a A
+  B -> b
+  Produções: dict A -> conjunto de tuplas (símbolos na RHS)
+  S -> A B | a
+  alphas = []  # Ai -> Ai α
+  betas = []   # Ai -> β (β não começa com Ai)
+  def copy(self) -> "Grammar":
+  def fresh_nonterminal(self, prefix="X") -> str:
+  def from_file(path: str) -> "Grammar":
+  def to_text(self) -> str:
+  if " -> " not in line:
+  lhs, rhs_all = line.split(" -> ", 1)
+  lines.append(f"  {A} -> " + " | ".join(rhs_list))
+  self.log.write("=== Remoção de produções unitárias (A -> B) ===\n")
+  self.log.write("Após eliminar Ai -> Aj com j<i e recursão à esquerda:\n")
+  self.productions = defaultdict(set)  # A -> set of rhs tuples
+  terminal_map = {}  # terminal -> novo não-terminal
+
+Gramática depois da remoção de λ:
+Não-terminais: A, B, Produções: dict A, S, alphas = []  # Ai, betas = []   # Ai, def copy(self), def fresh_nonterminal(self, prefix="X"), def from_file(path: str), def to_text(self), if ", lhs, rhs_all = line.split(", lines.append(f"  {A}, self.log.write("=== Remoção de produções unitárias (A, self.log.write("Após eliminar Ai, self.productions = defaultdict(set)  # A, terminal_map = {}  # terminal
+Terminais: ", ",, ".join(rhs_list)), "Grammar":, (símbolos, (β, +, 1), ===\n"), Ai, Ai), Aj, B), RHS), a, b, com, começa, conjunto, de, e, esquerda:\n"), in, j<i, line:, na, not, novo, não, não-terminal, of, recursão, rhs, set, str:, tuplas, tuples, à, α, β
+Símbolo inicial: S
+Produções:
+  A -> a | a A
+  B -> b
+  Produções: dict A -> conjunto de tuplas (símbolos na RHS)
+  S -> A B | B | a
+  alphas = []  # Ai -> Ai α
+  betas = []   # Ai -> β (β não começa com Ai)
+  def copy(self) -> "Grammar":
+  def fresh_nonterminal(self, prefix="X") -> str:
+  def from_file(path: str) -> "Grammar":
+  def to_text(self) -> str:
+  if " -> " not in line:
+  lhs, rhs_all = line.split(" -> ", 1)
+  lines.append(f"  {A} -> " + " | ".join(rhs_list))
+  self.log.write("=== Remoção de produções unitárias (A -> B) ===\n")
+  self.log.write("Após eliminar Ai -> Aj com j<i e recursão à esquerda:\n")
+  self.productions = defaultdict(set)  # A -> set of rhs tuples
+  terminal_map = {}  # terminal -> novo não-terminal
+
+=== Remoção de produções unitárias (A -> B) ===
+Gramática antes da remoção de unitárias:
+Não-terminais: A, B, Produções: dict A, S, alphas = []  # Ai, betas = []   # Ai, def copy(self), def fresh_nonterminal(self, prefix="X"), def from_file(path: str), def to_text(self), if ", lhs, rhs_all = line.split(", lines.append(f"  {A}, self.log.write("=== Remoção de produções unitárias (A, self.log.write("Após eliminar Ai, self.productions = defaultdict(set)  # A, terminal_map = {}  # terminal
+Terminais: ", ",, ".join(rhs_list)), "Grammar":, (símbolos, (β, +, 1), ===\n"), Ai, Ai), Aj, B), RHS), a, b, com, começa, conjunto, de, e, esquerda:\n"), in, j<i, line:, na, not, novo, não, não-terminal, of, recursão, rhs, set, str:, tuplas, tuples, à, α, β
+Símbolo inicial: S
+Produções:
+  A -> a | a A
+  B -> b
+  Produções: dict A -> conjunto de tuplas (símbolos na RHS)
+  S -> A B | B | a
+  alphas = []  # Ai -> Ai α
+  betas = []   # Ai -> β (β não começa com Ai)
+  def copy(self) -> "Grammar":
+  def fresh_nonterminal(self, prefix="X") -> str:
+  def from_file(path: str) -> "Grammar":
+  def to_text(self) -> str:
+  if " -> " not in line:
+  lhs, rhs_all = line.split(" -> ", 1)
+  lines.append(f"  {A} -> " + " | ".join(rhs_list))
+  self.log.write("=== Remoção de produções unitárias (A -> B) ===\n")
+  self.log.write("Após eliminar Ai -> Aj com j<i e recursão à esquerda:\n")
+  self.productions = defaultdict(set)  # A -> set of rhs tuples
+  terminal_map = {}  # terminal -> novo não-terminal
+
+Gramática depois da remoção de unitárias:
+Não-terminais: A, B, Produções: dict A, S, alphas = []  # Ai, betas = []   # Ai, def copy(self), def fresh_nonterminal(self, prefix="X"), def from_file(path: str), def to_text(self), if ", lhs, rhs_all = line.split(", lines.append(f"  {A}, self.log.write("=== Remoção de produções unitárias (A, self.log.write("Após eliminar Ai, self.productions = defaultdict(set)  # A, terminal_map = {}  # terminal
+Terminais: ", ",, ".join(rhs_list)), "Grammar":, (símbolos, (β, +, 1), ===\n"), Ai, Ai), Aj, B), RHS), a, b, com, começa, conjunto, de, e, esquerda:\n"), in, j<i, line:, na, not, novo, não, não-terminal, of, recursão, rhs, set, str:, tuplas, tuples, à, α, β
+Símbolo inicial: S
+Produções:
+  A -> a | a A
+  B -> b
+  Produções: dict A -> conjunto de tuplas (símbolos na RHS)
+  S -> A B | a | b
+  alphas = []  # Ai -> Ai α
+  betas = []   # Ai -> β (β não começa com Ai)
+  def copy(self) -> "Grammar":
+  def fresh_nonterminal(self, prefix="X") -> str:
+  def from_file(path: str) -> "Grammar":
+  def to_text(self) -> str:
+  if " -> " not in line:
+  lhs, rhs_all = line.split(" -> ", 1)
+  lines.append(f"  {A} -> " + " | ".join(rhs_list))
+  self.log.write("=== Remoção de produções unitárias (A -> B) ===\n")
+  self.log.write("Após eliminar Ai -> Aj com j<i e recursão à esquerda:\n")
+  self.productions = defaultdict(set)  # A -> set of rhs tuples
+  terminal_map = {}  # terminal -> novo não-terminal
+
+=== Remoção de símbolos inúteis (não geradores / inalcançáveis) ===
+Gramática antes da remoção de inúteis:
+Não-terminais: A, B, Produções: dict A, S, alphas = []  # Ai, betas = []   # Ai, def copy(self), def fresh_nonterminal(self, prefix="X"), def from_file(path: str), def to_text(self), if ", lhs, rhs_all = line.split(", lines.append(f"  {A}, self.log.write("=== Remoção de produções unitárias (A, self.log.write("Após eliminar Ai, self.productions = defaultdict(set)  # A, terminal_map = {}  # terminal
+Terminais: ", ",, ".join(rhs_list)), "Grammar":, (símbolos, (β, +, 1), ===\n"), Ai, Ai), Aj, B), RHS), a, b, com, começa, conjunto, de, e, esquerda:\n"), in, j<i, line:, na, not, novo, não, não-terminal, of, recursão, rhs, set, str:, tuplas, tuples, à, α, β
+Símbolo inicial: S
+Produções:
+  A -> a | a A
+  B -> b
+  Produções: dict A -> conjunto de tuplas (símbolos na RHS)
+  S -> A B | a | b
+  alphas = []  # Ai -> Ai α
+  betas = []   # Ai -> β (β não começa com Ai)
+  def copy(self) -> "Grammar":
+  def fresh_nonterminal(self, prefix="X") -> str:
+  def from_file(path: str) -> "Grammar":
+  def to_text(self) -> str:
+  if " -> " not in line:
+  lhs, rhs_all = line.split(" -> ", 1)
+  lines.append(f"  {A} -> " + " | ".join(rhs_list))
+  self.log.write("=== Remoção de produções unitárias (A -> B) ===\n")
+  self.log.write("Após eliminar Ai -> Aj com j<i e recursão à esquerda:\n")
+  self.productions = defaultdict(set)  # A -> set of rhs tuples
+  terminal_map = {}  # terminal -> novo não-terminal
+
+Gramática depois da remoção de inúteis:
+Não-terminais: A, B, S
+Terminais: a, b
+Símbolo inicial: S
+Produções:
+  A -> a | a A
+  B -> b
+  S -> A B | a | b
+
+=== Conversão para Forma Normal de Chomsky (FNC / CNF) ===
+Gramática antes da FNC:
+Não-terminais: A, B, S
+Terminais: a, b
+Símbolo inicial: S
+Produções:
+  A -> a | a A
+  B -> b
+  S -> A B | a | b
+
+Gramática depois de colocada em FNC:
+Não-terminais: A, B, S, T_a1
+Terminais: a, b
+Símbolo inicial: S
+Produções:
+  A -> T_a1 A | a
+  B -> b
+  S -> A B | a | b
+  T_a1 -> a
+
+=== Conversão para Forma Normal de Greibach (FNG / GNF) ===
+Gramática antes da FNG (já em FNC):
+Não-terminais: A, B, S, T_a1
+Terminais: a, b
+Símbolo inicial: S
+Produções:
+  A -> T_a1 A | a
+  B -> b
+  S -> A B | a | b
+  T_a1 -> a
+
+Após eliminar Ai->Aj com j<i e recursão à esquerda:
+Não-terminais: A, B, S, T_a1
+Terminais: a, b
+Símbolo inicial: S
+Produções:
+  A -> T_a1 A | a
+  B -> b
+  S -> A B | a | b
+  T_a1 -> a
+
+Gramática final em Forma Normal de Greibach:
+Não-terminais: A, B, S, T_a1
+Terminais: a, b
+Símbolo inicial: S
+Produções:
+  A -> a | a A
+  B -> b
+  S -> a | a A B | a B | b
+  T_a1 -> a
+
+=== Fim: gramática em Forma Normal de Greibach ===
+Não-terminais: A, B, S, T_a1
+Terminais: a, b
+Símbolo inicial: S
+Produções:
+  A -> a | a A
+  B -> b
+  S -> a | a A B | a B | b
+  T_a1 -> a
