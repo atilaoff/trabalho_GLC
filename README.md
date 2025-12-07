@@ -69,5 +69,5 @@ src/
 
 COMPONENTES
 -----------
-Moisés Átila
-Raul Ramalho
+- Moisés Átila
+- Raul Ramalho
