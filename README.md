@@ -7,8 +7,6 @@ implementação de uma solução para normalização de GLC usando a forma norma
 Use python3 ./[nome_do_arquivo] para compilar
 
 
-
-
 ## Componentes
 
 Moisés Átila
