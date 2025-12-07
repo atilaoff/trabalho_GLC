@@ -1,0 +1,12 @@
+Variaveis = {S, A, B, C}
+Alfabeto = {a, b, c}
+Inicial = S
+Regras:
+S -> AB
+S -> SCB
+A -> aA
+A -> C
+B -> bB
+B -> b
+C -> cC
+C -> &
