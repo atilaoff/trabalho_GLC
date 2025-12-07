@@ -1,5 +1,5 @@
 from copy import deepcopy
-
+from simplificacao import imprimir_gramatica
 # ============================================================
 # 4 - FORMA NORMAL DE CHOMSKY
 # ============================================================
@@ -141,29 +141,7 @@ def forma_normal_chomsky(G):
             G["producoes"][var] = novas_regras
 
     # Imprime usando função ajustada (veja abaixo)
-    imprimir_gramatica_lista(G, "Forma Normal de Chomsky Final")
+    imprimir_gramatica(G, "Forma Normal de Chomsky Final")
     return G
-
-
-# Função auxiliar de impressão para lidar com LISTAS e não strings
-def imprimir_gramatica_lista(G, titulo=""):
-    print("\n" + "="*40)
-    print(titulo)
-    print("="*40)
-    print("Variáveis:", sorted(list(G["variaveis"])))
-    print("Alfabeto:", sorted(list(G["alfabeto"])))
-    print("Inicial:", G["inicial"])
-    print("Produções:")
-    
-    # Ordena para ficar bonito
-    for v in sorted(G["producoes"]):
-        lista_regras = []
-        for r in G["producoes"][v]:
-            # Junta os símbolos com espaço para ficar legível (ex: "X_AB C")
-            lista_regras.append(" ".join(r))
-        
-        regras_formatadas = " | ".join(lista_regras)
-        print(f"{v} -> {regras_formatadas}")
-    print("="*40 + "\n")
 
 

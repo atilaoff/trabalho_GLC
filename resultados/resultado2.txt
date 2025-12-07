@@ -1,0 +1,101 @@
+
+=== ETAPA 1: SIMPLIFICAÇÃO ===
+
+========================================
+Gramática Original
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | A | ε
+A -> Bc | c
+B -> Ac | SS
+========================================
+
+
+### REMOÇÃO DE ε-PRODUÇÕES ###
+Variáveis anuláveis: {'S', 'B'}
+
+========================================
+Após remoção de ε-produções
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | A | ε
+A -> c | Bc
+B -> Ac | S | SS
+========================================
+
+
+### REMOÇÃO DE PRODUÇÕES UNITÁRIAS ###
+
+========================================
+Após remoção de produções unitárias
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | ε | c | Bc
+A -> c | Bc
+B -> Ac | SS | aAd | ε | c | Bc
+========================================
+
+
+### REMOÇÃO DE SÍMBOLOS INÚTEIS ###
+Variáveis geradoras: {'S', 'A', 'B'}
+Variáveis alcançáveis: {'S', 'A', 'B'}
+
+========================================
+Após remoção de símbolos inúteis
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | ε | c | Bc
+A -> c | Bc
+B -> Ac | SS | aAd | ε | c | Bc
+========================================
+
+
+========================================
+Gramática Simplificada Final
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | ε | c | Bc
+A -> c | Bc
+B -> Ac | SS | aAd | ε | c | Bc
+========================================
+
+
+=== CONVERSÃO PARA FORMA NORMAL DE CHOMSKY ===
+
+### FORMA NORMAL DE CHOMSKY ###
+-> Isolando terminais...
+-> Binarizando produções longas...
+
+========================================
+Forma Normal de Chomsky Final
+========================================
+Variáveis: ['A', 'B', 'S', 'T_a', 'T_c', 'T_d', 'X_aA']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> X_aA T_d | ε | c | B T_c
+A -> c | B T_c
+B -> A T_c | S S | X_aA T_d | ε | c | B T_c
+T_a -> a
+T_c -> c
+T_d -> d
+X_aA -> T_a A
+========================================
+
+
+Processo concluído com sucesso!

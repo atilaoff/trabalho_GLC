@@ -7,13 +7,39 @@ def imprimir_gramatica(G, titulo=""):
     print("\n" + "="*40)
     print(titulo)
     print("="*40)
-    print("Variáveis:", G["variaveis"])
-    print("Alfabeto:", G["alfabeto"])
+    # Converte sets para lista ordenada para visualização limpa
+    print("Variáveis:", sorted(list(G["variaveis"])))
+    print("Alfabeto:", sorted(list(G["alfabeto"])))
     print("Inicial:", G["inicial"])
     print("Produções:")
-    for v in sorted(G["producoes"]):
-        regras = " | ".join(G["producoes"][v])
-        print(f"{v} -> {regras}")
+
+    # --- MUDANÇA AQUI ---
+    # 1. Pega todas as chaves (variáveis) e ordena alfabeticamente
+    ordem_variaveis = sorted(list(G["producoes"].keys()))
+
+    # 2. Se o símbolo inicial estiver na lista, move para o topo
+    inicial = G["inicial"]
+    if inicial in ordem_variaveis:
+        ordem_variaveis.remove(inicial) # Tira de onde estava (ex: posição 3)
+        ordem_variaveis.insert(0, inicial) # Coloca na posição 0
+
+    # 3. Itera sobre essa lista ordenada personalizada
+    for v in ordem_variaveis:
+        regras_formatadas = []
+        
+        for r in G["producoes"][v]:
+            # VERIFICAÇÃO DE TIPO:
+            if isinstance(r, list):
+                # Se for lista ['A', 'B'], junta com espaço -> "A B"
+                regras_formatadas.append(" ".join(r))
+            else:
+                # Se for string "AB", mantém "AB"
+                regras_formatadas.append(r)
+        
+        # Junta todas as regras com " | "
+        linha = " | ".join(regras_formatadas)
+        print(f"{v} -> {linha}")
+        
     print("="*40 + "\n")
 
 
@@ -71,7 +97,6 @@ def remover_epsilon(G):
 
     G["producoes"] = novas_producoes
 
-    imprimir_gramatica(G, "Após remoção de ε-produções")
     return G
 
 
@@ -124,7 +149,6 @@ def remover_unitarias(G):
 
     G["producoes"] = novas
 
-    imprimir_gramatica(G, "Após remoção de produções unitárias")
     return G
 
 
@@ -209,7 +233,6 @@ def remover_inuteis(G):
     G["variaveis"] = G["variaveis"] & alcan
     G["producoes"] = {A: G["producoes"][A] for A in G["variaveis"]}
 
-    imprimir_gramatica(G, "Após remoção de símbolos inúteis")
     return G
 
 
@@ -220,8 +243,11 @@ def simplificar_gramatica(G):
     imprimir_gramatica(G, "Gramática Original")
 
     G = remover_epsilon(G)
+    imprimir_gramatica(G, "Após remoção de ε-produções")
     G = remover_unitarias(G)
+    imprimir_gramatica(G, "Após remoção de produções unitárias")
     G = remover_inuteis(G)
+    imprimir_gramatica(G, "Após remoção de símbolos inúteis")
 
     imprimir_gramatica(G, "Gramática Simplificada Final")
     return G

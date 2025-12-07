@@ -1,0 +1,117 @@
+
+=== GRAMÁTICA ORIGINAL ===
+
+========================================
+
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | A | ε
+A -> Bc | c
+B -> Ac | SS
+========================================
+
+
+=== ETAPA 1: SIMPLIFICAÇÃO ===
+
+========================================
+Gramática Original
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | A | ε
+A -> Bc | c
+B -> Ac | SS
+========================================
+
+
+### REMOÇÃO DE ε-PRODUÇÕES ###
+Variáveis anuláveis: {'B', 'S'}
+
+========================================
+Após remoção de ε-produções
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | A | ε
+A -> c | Bc
+B -> Ac | SS | S
+========================================
+
+
+### REMOÇÃO DE PRODUÇÕES UNITÁRIAS ###
+
+========================================
+Após remoção de produções unitárias
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | ε | c | Bc
+A -> c | Bc
+B -> Ac | SS | c | Bc | aAd | ε
+========================================
+
+
+### REMOÇÃO DE SÍMBOLOS INÚTEIS ###
+Variáveis geradoras: {'B', 'A', 'S'}
+Variáveis alcançáveis: {'B', 'A', 'S'}
+
+========================================
+Após remoção de símbolos inúteis
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | ε | c | Bc
+A -> c | Bc
+B -> Ac | SS | c | Bc | aAd | ε
+========================================
+
+
+========================================
+Gramática Simplificada Final
+========================================
+Variáveis: ['A', 'B', 'S']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> aAd | ε | c | Bc
+A -> c | Bc
+B -> Ac | SS | c | Bc | aAd | ε
+========================================
+
+
+=== CONVERSÃO PARA FORMA NORMAL DE CHOMSKY ===
+
+### FORMA NORMAL DE CHOMSKY ###
+-> Isolando terminais...
+-> Binarizando produções longas...
+
+========================================
+Forma Normal de Chomsky Final
+========================================
+Variáveis: ['A', 'B', 'S', 'T_a', 'T_c', 'T_d', 'X_aA']
+Alfabeto: ['a', 'c', 'd']
+Inicial: S
+Produções:
+S -> X_aA T_d | ε | c | B T_c
+A -> c | B T_c
+B -> A T_c | S S | c | B T_c | X_aA T_d | ε
+T_a -> a
+T_c -> c
+T_d -> d
+X_aA -> T_a A
+========================================
+
+
+Processo concluído com sucesso!
+Arquivo passo_a_passo_log.txt gerado.
