@@ -12,12 +12,19 @@ def forma_normal_greibach(G):
     
     print("\n### FORMA NORMAL DE GREIBACH ###")
     
-    # ---------------------------------------------------------
+# ---------------------------------------------------------
     # 1. RENOMEAÇÃO DE VARIÁVEIS (A1, A2, ..., An)
     # ---------------------------------------------------------
-    # O algoritmo exige uma ordenação. Vamos mapear os nomes originais para A_i.
     
-    variaveis_ordenadas = sorted(list(G["variaveis"]))
+    # PEGA O INICIAL SEPARADO
+    inicial = G["inicial"]
+    
+    # PEGA O RESTO E ORDENA
+    outras_variaveis = sorted([v for v in G["variaveis"] if v != inicial])
+    
+    # CRIA A LISTA COM O INICIAL PRIMEIRO
+    variaveis_ordenadas = [inicial] + outras_variaveis
+    
     mapa_original_para_Ai = {}
     mapa_Ai_para_original = {}
     
@@ -131,9 +138,8 @@ def forma_normal_greibach(G):
             else:
                 novas_regras_z.append(regra)
         G["producoes"][z] = novas_regras_z
-    
+    G = remover_inuteis(G)
     imprimir_gramatica(G, "Forma Normal de Greibach Final")
-    remover_inuteis(G)
     return G
 
 
