@@ -11,17 +11,15 @@ class Logger(object):
         self.log = open(nome_arquivo, "w", encoding="utf-8")
 
     def write(self, message):
-        self.terminal.write(message) # Imprime na tela
-        self.log.write(message)      # Salva no arquivo
+        self.terminal.write(message) # imprime na tela
+        self.log.write(message)      # salva no arquivo
 
     def flush(self):
-        # Necessário para compatibilidade com o sistema
+        # necessário para compatibilidade com o sistema
         self.terminal.flush()
         self.log.flush()
 
-# ============================================================
-# SEU CÓDIGO PRINCIPAL ABAIXO
-# ============================================================
+
 
 def menu():
     print("="*50)

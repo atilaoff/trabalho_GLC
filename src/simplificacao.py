@@ -1,8 +1,8 @@
 from copy import deepcopy
 
-# ============================================================
-# IMPRESSÃO DA GRAMÁTICA
-# ============================================================
+
+# impressão da gramática
+
 def imprimir_gramatica(G, titulo=""):
     print("\n" + "="*40)
     print(titulo)
@@ -13,22 +13,22 @@ def imprimir_gramatica(G, titulo=""):
     print("Inicial:", G["inicial"])
     print("Produções:")
 
-    # --- MUDANÇA AQUI ---
-    # 1. Pega todas as chaves (variáveis) e ordena alfabeticamente
+    
+    # ordena alfabeticamente
     ordem_variaveis = sorted(list(G["producoes"].keys()))
 
-    # 2. Se o símbolo inicial estiver na lista, move para o topo
+    # se o símbolo inicial estiver na lista, move para o topo
     inicial = G["inicial"]
     if inicial in ordem_variaveis:
         ordem_variaveis.remove(inicial) # Tira de onde estava (ex: posição 3)
         ordem_variaveis.insert(0, inicial) # Coloca na posição 0
 
-    # 3. Itera sobre essa lista ordenada personalizada
+    # itera sobre lista ordenada personalizada
     for v in ordem_variaveis:
         regras_formatadas = []
         
         for r in G["producoes"][v]:
-            # VERIFICAÇÃO DE TIPO:
+            # verifica tipo:
             if isinstance(r, list):
                 # Se for lista ['A', 'B'], junta com espaço -> "A B"
                 regras_formatadas.append(" ".join(r))
@@ -43,9 +43,9 @@ def imprimir_gramatica(G, titulo=""):
     print("="*40 + "\n")
 
 
-# ============================================================
-# 1 - REMOÇÃO DE ε-PRODUÇÕES
-# ============================================================
+
+# Remove epsilon-produções
+
 def remover_epsilon(G):
     G = deepcopy(G)
     
@@ -53,7 +53,7 @@ def remover_epsilon(G):
 
     anulaveis = set()
 
-    # PASSO 1: Encontrar variáveis anuláveis
+    # Encontrar variáveis anuláveis
     mudou = True
     while mudou:
         mudou = False
@@ -66,7 +66,7 @@ def remover_epsilon(G):
 
     print("Variáveis anuláveis:", anulaveis)
 
-    # PASSO 2: Gerar novas produções
+    # Gerar novas produções
     novas_producoes = {}
 
     for var, regras in G["producoes"].items():
@@ -91,7 +91,7 @@ def remover_epsilon(G):
 
         novas_producoes[var] = list(novas)
 
-    # PASSO 3: Caso variável inicial seja anulável
+    # Caso variável inicial seja anulável
     if G["inicial"] in anulaveis:
         novas_producoes[G["inicial"]].append("ε")
 
@@ -100,9 +100,9 @@ def remover_epsilon(G):
     return G
 
 
-# ============================================================
-# 2 - REMOÇÃO DE PRODUÇÕES UNITÁRIAS
-# ============================================================
+
+# Remove produções unitárias
+
 def remover_unitarias(G):
     G = deepcopy(G)
 
@@ -152,9 +152,7 @@ def remover_unitarias(G):
     return G
 
 
-# ============================================================
-# 3 - ELIMINAÇÃO DE SÍMBOLOS INÚTEIS
-# ============================================================
+# Remove simbolos inúteis
 
 def remover_inuteis(G):
     G = deepcopy(G)
@@ -164,9 +162,7 @@ def remover_inuteis(G):
     variaveis = G["variaveis"]
     terminais = G["alfabeto"]
 
-    # =========================================================
-    # PASSO 1 - ENCONTRAR VARIÁVEIS GERADORAS
-    # =========================================================
+    # Encontra variáveis geradores
     geradores = set()
     mudou = True
 
@@ -195,18 +191,14 @@ def remover_inuteis(G):
 
     # Proteção contra destruição total
     if not geradores:
-        print("⚠ Nenhuma variável geradora encontrada! Abortando remoção para evitar perda da gramática.")
+        print("⚠ Nenhuma variável geradora encontrada Abortando remoção para evitar perda da gramática.")
         return G
 
-    # =========================================================
-    # REMOVE NÃO-GERADORES
-    # =========================================================
+    # Remove não geradores
     G["variaveis"] = G["variaveis"] & geradores
     G["producoes"] = {A: G["producoes"][A] for A in G["variaveis"]}
 
-    # =========================================================
-    # PASSO 2 - ENCONTRAR VARIÁVEIS ALCANÇÁVEIS
-    # =========================================================
+    # Encontra variáveis alcançáveis
     alcan = set()
     fila = [G["inicial"]]
 
@@ -227,18 +219,18 @@ def remover_inuteis(G):
         print("⚠ Símbolo inicial não alcançável. Abortando remoção.")
         return G
 
-    # =========================================================
-    # REMOVE NÃO-ALCANÇÁVEIS
-    # =========================================================
+   
+    # remove não alcançáveis
+    
     G["variaveis"] = G["variaveis"] & alcan
     G["producoes"] = {A: G["producoes"][A] for A in G["variaveis"]}
 
     return G
 
 
-# ============================================================
-# FUNÇÃO PRINCIPAL DE SIMPLIFICAÇÃO
-# ============================================================
+
+# Função simplificação principal
+
 def simplificar_gramatica(G):
     imprimir_gramatica(G, "Gramática Original")
 
