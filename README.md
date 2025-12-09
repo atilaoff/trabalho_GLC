@@ -71,3 +71,5 @@ COMPONENTES
 -----------
 - Moisés Átila
 - Raul Ramalho
+
+Turma de 24M34 LFA
